@@ -110,7 +110,7 @@
         <span class="hdr-sep"></span>
         <label for="dataSelect">Data</label>
         <select id="dataSelect" style="width:160px;">
-            <option value="ct_town_data_simulated.csv" selected>Simulated (pop. real)</option>
+            <option value="ct_town_data_2020.csv" selected>2020 Census / 2024 Election</option>
         </select>
         <span class="hdr-sep"></span>
         <label for="districtCount">Districts</label>
@@ -139,7 +139,7 @@
             <option value="2010s">2010s</option>
             <option value="2020s" selected>2020s</option>
         </select>
-        <span class="data-label" id="dataLabel">Loaded: Simulated (pop. real)</span>
+        <span class="data-label" id="dataLabel">Loaded: 2020 Census / 2024 Election</span>
     </header>
 
     <div id="map"></div>
@@ -164,7 +164,7 @@
         let TOWN_DATA = {};
 
         async function loadTownData(filename) {
-            filename = filename || 'ct_town_data_2020.csv';
+            filename = filename || document.getElementById('dataSelect').value;
             const response = await fetch(filename);
             const text = await response.text();
             const lines = text.trim().split('\n');
